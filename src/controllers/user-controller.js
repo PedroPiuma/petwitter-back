@@ -15,7 +15,6 @@ export const index = async (req, res) => {
 export const updateProfilePicture = async (req, res) => {
   try {
     const id = Number(req.params.id)
-    console.log(id)
     const img = req.file?.path ? req.file.path : ''
     const newProfile = await prisma.user.update({
       where: { id },
