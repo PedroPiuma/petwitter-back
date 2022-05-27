@@ -11,9 +11,18 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  name     String? @db.VarChar(255)
-  email    String  @unique @db.VarChar(255)
-  username     String? @db.VarChar(255)
-  password String
+  id        Int     @id @default(autoincrement())
+  name      String? @db.VarChar(255)
+  email     String  @unique @db.VarChar(255)
+  username  String? @db.VarChar(255)
+  password  String
+  image_url String?  @db.VarChar
+  twittes   Twitte[] 
+}
+
+model Twitte {
+  id        Int     @id @default(autoincrement())
+  body      String  @db.VarChar(140)
+  user      User    @relation(fields: [user_id], references: [id])
+  user_id   Int
 }
