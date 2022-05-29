@@ -8,6 +8,12 @@ export default {
         preHandler: [validateRequest],
         handler: twitteController.createTwitte,
     },
+    deleteTwitte: {
+        method: "DELETE",
+        url: "/twitte/:id",
+        preHandler: [validateRequest],
+        handler: twitteController.deleteTwitte,
+    },
     getAllTwittes: {
         method: "GET",
         url: "/twitte",
@@ -16,7 +22,7 @@ export default {
     },
     getTwittesOfUser: {
         method: "GET",
-        url: "/twitte/:userTwittes",
+        url: "/twitte/:id",
         preHandler: [validateRequest],
         handler: twitteController.getTwittesOfUser,
     },
