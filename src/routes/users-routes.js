@@ -22,6 +22,12 @@ export default {
     preHandler: [validateRequest],
     handler: UserController.index,
   },
+  getUser: {
+    method: "GET",
+    url: "/users/:id",
+    preHandler: [validateRequest],
+    handler: UserController.getUser,
+  },
   updateProfilePicture: {
     method: "PATCH",
     url: "/users/:id",

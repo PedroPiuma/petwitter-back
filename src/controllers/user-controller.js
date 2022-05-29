@@ -12,6 +12,18 @@ export const index = async (req, res) => {
   }
 };
 
+export const getUser = async (req, res) => {
+  try {
+    const { id } = req.params
+    console.log(id)
+    let user = await prisma.user.findUnique({ where: { id: Number(id) } });
+    return res.send(user);
+  } catch (error) {
+    console.error("users", error);
+    res.status(500).send({ error: `Não foi possível encontrar usuário` });
+  }
+};
+
 export const updateProfilePicture = async (req, res) => {
   try {
     const id = Number(req.params.id)
