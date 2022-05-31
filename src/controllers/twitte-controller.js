@@ -30,8 +30,16 @@ export const deleteTwitte = async (req, res) => {
 };
 
 export const getAllTwittes = async (req, res) => {
+  const { take = 0 } = req.query
   try {
-    const twittes = await prisma.twitte.findMany()
+    const twittes = await prisma.twitte.findMany({
+      skip: 0,
+      take: Number(take),
+      orderBy: {
+        id: 'desc',
+      },
+    },
+    )
     return res.send(twittes).status(200);
   } catch (error) {
     console.error("users", error);
