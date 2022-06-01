@@ -30,7 +30,7 @@ export const deleteTwitte = async (req, res) => {
 };
 
 export const getAllTwittes = async (req, res) => {
-  const { take = 0 } = req.query
+  const { take = 10 } = req.query
   try {
     const twittes = await prisma.twitte.findMany({
       skip: 0,
