@@ -12,9 +12,9 @@ datasource db {
 // Remover ? de username
 model User {
   id        Int     @id @default(autoincrement())
-  name      String? @db.VarChar(255)
+  name      String? @db.VarChar(25)
   email     String  @unique @db.VarChar(255)
-  username  String? @db.VarChar(255)
+  username  String? @db.VarChar(25)
   password  String
   image_url String?  @db.VarChar
   twittes   Twitte[] 
