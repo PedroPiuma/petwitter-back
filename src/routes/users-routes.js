@@ -31,7 +31,8 @@ export default {
   updateProfilePicture: {
     method: "PATCH",
     url: "/users/:id",
-    preHandler: upload.single("image_url"),
+    // preHandler: upload.single("image_url"),
+    preHandler: [validateRequest],
     handler: UserController.updateProfilePicture,
   },
 };
