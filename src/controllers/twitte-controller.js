@@ -30,16 +30,14 @@ export const deleteTwitte = async (req, res) => {
 };
 
 export const getAllTwittes = async (req, res) => {
-  const { take = 10 } = req.query
+  const { take, skip = 0 } = req.query
+  let data = {}
+  data.skip = Number(skip)
+  data.orderBy = { id: 'desc' }
+  if (take) data.take = Number(take)
+
   try {
-    const twittes = await prisma.twitte.findMany({
-      skip: 0,
-      take: Number(take),
-      orderBy: {
-        id: 'desc',
-      },
-    },
-    )
+    const twittes = await prisma.twitte.findMany(data)
     return res.send(twittes).status(200);
   } catch (error) {
     console.error("users", error);
@@ -50,7 +48,7 @@ export const getAllTwittes = async (req, res) => {
 export const getTwittesOfUser = async (req, res) => {
   try {
     const { id } = req.params
-    const twittesOfUser = await prisma.twitte.findMany({ where: { user_id: Number(id) } })
+    const twittesOfUser = await prisma.twitte.findMany({ where: { user_id: Number(id) }, orderBy: { id: 'desc' } })
     return res.send(twittesOfUser).status(200);
   } catch (error) {
     console.error("users", error);
