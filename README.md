@@ -1,15 +1,17 @@
-# Boilerplate de back-end da Otterwise
+# Petwitter Back-End
 
 ## Tecnologias
 
 - [Prisma](https://www.prisma.io/)
 - [Fastify](https://fastify.io)
+- [Bcrypt](https://www.npmjs.com/package/bcrypt)
+- [Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 
 ## Utilização
 
 ### Instalando as dependências
 
-`yarn` ou `npm install`
+`npm install`
 
 ### Conectando ao seu banco de dados
 
@@ -17,8 +19,8 @@ Crie um novo arquivo chamado .env e copie o conteúdo do arquivo .env-example mo
 
 ### Rodando a aplicação
 
-Antes de rodar a aplicação, certifique-se que o seu banco de dados está com as ultimas atualizações do prisma.schema. Para garantir que estejam, rode `yarn prisma:push`.
-Após certificar que o banco reflete seu prisma.schema, utilize o comando `yarn dev` para rodar a aplicação localmente.
+Antes de rodar a aplicação, certifique-se que o seu banco de dados está com as ultimas atualizações do prisma.schema. Para garantir que estejam, rode `npm run db:push`.
+Após certificar que o banco reflete seu prisma.schema, utilize o comando `npm run dev` para rodar a aplicação localmente.
 
 ### Scripts
 
@@ -32,7 +34,7 @@ Após certificar que o banco reflete seu prisma.schema, utilize o comando `yarn 
 
 `db:migrate-dev`: espera um nome ao final para que crie uma nova migration com este nome.
 
-`db:migrate-prod`: utilizado para aplicar as alterações de migrations em um ambientem de testes ou produção.
+`db:migrate-prod`: utilizado para aplicar as alterações de migrations em um ambiente de testes ou produção.
 
 `studio`: executa o comando `npx prisma studio` para abrir o studio do prisma no navegador.
 
