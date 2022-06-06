@@ -12,7 +12,6 @@ export const createTwitte = async (req, res) => {
     });
     return res.send(twitteCreated).status(200);
   } catch (error) {
-    console.error("users", error);
     res.status(500).send({ error: `Não possível criar o twitte.` });
   }
 };
@@ -20,11 +19,9 @@ export const createTwitte = async (req, res) => {
 export const deleteTwitte = async (req, res) => {
   try {
     const { id } = req.params
-    console.log(id)
     const twitteDeleted = await prisma.twitte.delete({ where: { id: Number(id) } })
     return res.send(twitteDeleted).status(200);
   } catch (error) {
-    console.error("users", error);
     res.status(500).send({ error: `Não possível deletar o twitte.` });
   }
 };
@@ -40,7 +37,6 @@ export const getAllTwittes = async (req, res) => {
     const twittes = await prisma.twitte.findMany(data)
     return res.send(twittes).status(200);
   } catch (error) {
-    console.error("users", error);
     res.status(500).send({ error: `Não possível listar os twittes.` });
   }
 };
@@ -51,7 +47,6 @@ export const getTwittesOfUser = async (req, res) => {
     const twittesOfUser = await prisma.twitte.findMany({ where: { user_id: Number(id) }, orderBy: { id: 'desc' } })
     return res.send(twittesOfUser).status(200);
   } catch (error) {
-    console.error("users", error);
     res.status(500).send({ error: `Não possível listar os twittes.` });
   }
 };
