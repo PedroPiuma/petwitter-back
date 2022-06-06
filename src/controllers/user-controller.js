@@ -24,7 +24,7 @@ export const getUser = async (req, res) => {
   }
 };
 
-export const updateProfilePicture = async (req, res) => {
+export const updateProfile = async (req, res) => {
   try {
     const id = Number(req.params.id)
     const img = req.file?.path ? req.file.path : ''

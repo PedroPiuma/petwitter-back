@@ -28,11 +28,11 @@ export default {
     preHandler: [validateRequest],
     handler: UserController.getUser,
   },
-  updateProfilePicture: {
+  updateProfile: {
     method: "PATCH",
     url: "/users/:id",
     // preHandler: upload.single("image_url"),
     preHandler: [validateRequest],
-    handler: UserController.updateProfilePicture,
+    handler: UserController.updateProfile,
   },
 };
