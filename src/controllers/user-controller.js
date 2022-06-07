@@ -7,7 +7,6 @@ export const index = async (req, res) => {
     });
     return res.send({ data: { users } });
   } catch (error) {
-    console.error("users", error);
     res.status(500).send({ error: `Cannot fetch users` });
   }
 };
@@ -15,12 +14,10 @@ export const index = async (req, res) => {
 export const getUser = async (req, res) => {
   try {
     const { id } = req.params
-    console.log(id)
     let user = await prisma.user.findUnique({ where: { id: Number(id) } });
     return res.send(user);
   } catch (error) {
-    console.error("users", error);
-    res.status(500).send({ error: `Não foi possível encontrar usuário` });
+    res.status(500).send({ error: `Não foi possível encontrar usuário.` });
   }
 };
 
@@ -38,7 +35,6 @@ export const updateProfile = async (req, res) => {
     const newProfile = await prisma.user.update(newProfileData)
     res.send(newProfile)
   } catch (error) {
-    console.error("users", error);
     res.status(500).send('Não foi possível atualizar o perfil.');
   }
 }
