@@ -43,8 +43,15 @@ export const getAllTwittes = async (req, res) => {
 
 export const getTwittesOfUser = async (req, res) => {
   try {
+    const { take, skip = 0 } = req.query
     const { id } = req.params
-    const twittesOfUser = await prisma.twitte.findMany({ where: { user_id: Number(id) }, orderBy: { id: 'desc' } })
+    let data = {
+      where: { user_id: Number(id) },
+      orderBy: { id: 'desc' },
+      skip: Number(skip),
+    }
+    if (take) data.take = Number(take)
+    const twittesOfUser = await prisma.twitte.findMany(data)
     return res.send(twittesOfUser).status(200);
   } catch (error) {
     res.status(500).send({ error: `Não possível listar os twittes.` });
